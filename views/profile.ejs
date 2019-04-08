@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Profile</title>
+       <link rel="stylesheet" href="stylesheets/profile.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <meta name="viewport">
+       <!-- jQuery library -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+       <!-- Latest compiled JavaScript -->
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+
+    </head>
+    <body>
+            <nav class="navbar navbar-transparent navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <div class="navbar-brand brand-name">Discussion-Forum</div>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="hover"><a href="/homepage">Home</a></li>
+                            <li class="hover"><a href="/display">Topics</a></li>
+                            <li class="hover"><a href="/profile">Profile</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+     <div class="profile">
+         <br><br><br>
+         <h1 style="color:rgba(0, 128, 0, 0.6)">Profile</h1>
+        <div class="list-group">
+        <p class="list-group-item "><b>Name:</b><%- user.name %></p>
+        <p class="list-group-item "><b>Email:</b><%- user.email %></p>
+        <p class="list-group-item "><b>Phone:</b><%- user.phone %></p>
+        <p class="list-group-item "><b>Gender:</b><%- user.gender %></p>
+        </div>
+        <form action="logout" method="get">
+            <input class=" btn btn-default btn-success" type="submit" value="Log out">
+        </form>
+
+        <br>
+        <br><br>
+
+
+        <form action="create" method="post">
+            <label><b><i>Create a new topic to discuss:</i></b></label><br>
+            <input type="text" name="topic" required autofocus autocomplete="off">
+            <br>
+            <input class=" btn btn-default btn-success" type="submit" value="Create">
+        </form>
+
+        <span>OR</span>
+
+        <form  action="display" method="get">
+            <input class=" btn btn-default btn-success" type="submit" value="View all topics">
+        </form>
+        <div class="space"></div>
+        </div>
+        </div>
+    </body>
+</html>

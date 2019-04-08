@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Stranger app</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <meta name="viewport">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+
+        <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+    </head>
+    <body>
+            <nav class="navbar navbar-transparent navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <div class="navbar-brand brand-name">Discussion-Forum</div>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="hover"><a href="/homepage">Home</a></li>
+                            <li class="hover"><a href="/display">Topics</a></li>
+                            <li class="hover"><a href="/profile">Profile</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+        <div class="loginpage">
+            <form action="register" method="post">
+                <label>Name</label><br>
+                <input type="text" name="name" required autofocus><br>
+                <label>Email-id</label><br>
+                <input type="email" name="email" required><br>
+                <label>Phone number</label><br>
+                <input type="tel" name="phone" required><br>
+                <label>Password</label><br>
+                <input type="password" name="password" required><br>
+                <label>Gender:</label><br>
+                <select name="gender">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                </select><br>
+                <input class="log" type="submit" value="Register">
+            </form>
+        </div>
+    </body>
+
+</html>

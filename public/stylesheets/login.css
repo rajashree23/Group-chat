@@ -1,0 +1,26 @@
+.loginpage{
+    border: 2px solid black;
+    width:30%;
+    position:absolute;
+    top:30%;
+
+    left:0;
+    right:0;
+    margin:auto;
+    padding:5px;
+    
+    background-color:rgba(255, 239, 244, 0.5);
+  
+
+  }
+  label{
+    font-variant: small-caps;
+  }
+  body{
+    background-image:url("/images/chatting.png") ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: 100%;
+    
+  }
+  

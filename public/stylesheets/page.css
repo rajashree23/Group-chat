@@ -1,0 +1,26 @@
+body{
+    background-image:url("/images/chatting.png") ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: 100%;
+
+}
+
+.sign{
+    margin-top:5%;
+    margin-left:44%;
+    
+}
+.text{
+    margin-top: 20%;
+    margin-left:-2%;
+    font-family: 'Aclonica';
+    font-size:45px;
+    text-align: center;
+    
+}
+.navbar.navbar-transparent.navbar-default
+{
+     background-color:rgba(192,192,192,0.6);
+
+}

@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Topics</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/display.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-transparent navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand brand-name">Discussion-Forum</div>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hover"><a href="/homepage">Home</a></li>
+                <li class="hover"><a href="/display">Topics</a></li>
+                <li class="hover"><a href="/profile">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <center style="color:red">
+        <%- msg %>
+    </center>
+    <div class="container">
+        <h1>Topics</h1>
+        <div class="list-group">
+            <% for(let i = 0;i < topics.length ; i++){ %>
+            <a class="list-group-item" href="/topic/<%- topics[i] %>">
+                <%- topics[i] %><span class="badge"><%- num[i]-1 %></span></a>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
