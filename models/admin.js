@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var topicSchema = new Schema({
+var adminSchema = new Schema({
   email: {type:String,required:true,unique:true},
 	topicname:[{type:String,required:true,unique:true}],
   member_email: [{type:String,required:true,unique:true}]

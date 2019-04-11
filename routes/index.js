@@ -65,6 +65,7 @@ router.post('/create', create.topics);
 router.get('/display', topics.display);
 router.post('/send', send.message);
 router.post('/refresh', refresh.messages);
+
 router.get('/logout', function(req, res) {
     req.session.user = null;
     console.log(req.session);
