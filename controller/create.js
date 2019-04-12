@@ -13,9 +13,15 @@ var topics=function(req,res){
 		});
     	console.log(req.session.user.email);
 		console.log(req.session.user.name);
-		adminmodel.save(function(err,doc){
-			
+		adminmodel.save(function(err,docs){
+			console.log(docs);
+
 		});
+		adminModel.findOneAndUpdate({'email':req.session.user.email},
+	{$push:{topicname:req.body.topic}},
+ function(err,raw){
+	 console.log(raw);
+ });
 		topicmodel.save(function(err,doc){
 			if(!err){
 				req.session.msg = "Topic created Successfully..!!"
