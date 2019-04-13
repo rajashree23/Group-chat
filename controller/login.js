@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var userModel = require('../models/user');
+var adminModel = require('../models/admin');
 
 var login = function(req, res) {
     userModel.findOne({
@@ -21,6 +22,9 @@ var login = function(req, res) {
                 adminModel.findOne({email:req.body.email},function(err,users){
                   if(users){
                     var found="yes";
+                  }
+                  else {
+                    var found="no";
                   }
 
                 });

@@ -49,8 +49,8 @@ router.get('/topic/:id', function(req, res) {
 router.get('/profile', function(req, res) {
     if (req.session.user) {
         res.render('profile', {
-            'user': req.session.user
-            'found':req.session.search
+            'user': req.session.user,
+            'search':req.session.search
         });
     }
     else {
