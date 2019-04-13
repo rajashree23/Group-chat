@@ -7,21 +7,27 @@ var topics=function(req,res){
 			topicname:req.body.topic,
             messages:["Created by "+req.session.user.name]
 		});
-		var adminmodel = new adminModel({
-			email:req.session.user.email,
-
+		adminModel.findOne({
+			email:req.session.user.email},function(err,user){
+				console.log(user);
+				if(user){
+					adminModel.findOneAndUpdate({'email':req.session.user.email},
+				   {$push:{topicname:req.body.topic}},
+				   function(err,raw){
+						   console.log(raw);
+					 });
+				}
+				else{
+					var adminmodel= new adminModel({
+						 email:req.session.user.email,
+						 topicname:req.body.topic
+					});
+					adminmodel.save(function(err,docs){
+						 console.log("this",err);
+					});
+				}
+			
 		});
-    	console.log(req.session.user.email);
-		console.log(req.session.user.name);
-		adminmodel.save(function(err,docs){
-			console.log(docs);
-
-		});
-		adminModel.findOneAndUpdate({'email':req.session.user.email},
-	{$push:{topicname:req.body.topic}},
- function(err,raw){
-	 console.log(raw);
- });
 		topicmodel.save(function(err,doc){
 			if(!err){
 				req.session.msg = "Topic created Successfully..!!"
