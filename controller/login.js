@@ -17,6 +17,14 @@ var login = function(req, res) {
                     "gender": user.gender,
                 };
                 req.session.user = details;
+
+                adminModel.findOne({email:req.body.email},function(err,users){
+                  if(users){
+                    var found="yes";
+                  }
+
+                });
+                req.session.search= found;
                 return res.redirect('/profile');
             } else
                 return res.render('login',{"msg":"Wrong email or password, Please try again..!!"});

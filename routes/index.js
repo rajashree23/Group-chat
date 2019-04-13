@@ -50,6 +50,7 @@ router.get('/profile', function(req, res) {
     if (req.session.user) {
         res.render('profile', {
             'user': req.session.user
+            'found':req.session.search
         });
     }
     else {
