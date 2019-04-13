@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<table>
+      <% for(let i = 0;i < email.length ; i++){ %>
+        <tr>
+        <td>
+      <div class="list-group-item" >
+          <span><%- email[i].email %></span></div>
+        </td>
+          <td>
+            <a href="/subscribe/<%- email[i].email %>" class="button">Accept</a>
+          </td>
+          <td><a href="/unsubscribe/<%- email[i].email %>" class="button">Deny</a></td>
+        </tr>
+
+      <% } %>
+
+</table>
+  <div class="list-group">
+
+    </div>
+
+  <form action="logout" method="get">
+
+    <div class="container-login100-form-btn">
+
+      <input type="submit" class="login100-form-btn" value="Logout">
+
+
+
+    </div>
+
+  </form>
+</body>
