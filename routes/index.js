@@ -58,6 +58,15 @@ router.get('/profile', function(req, res) {
 
 });
 
+router.get('/notif',function(req,res){
+  res.render('admin');
+
+
+});
+router.post('/notif',function(req,res){
+   if(req.session.user)
+     res.redirect('/admin');
+});
 
 router.post('/login', login.login);
 router.post('/register', register.register);
