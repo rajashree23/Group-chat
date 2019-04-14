@@ -4,7 +4,7 @@ var register = require('../controller/register');
 var login = require('../controller/login');
 var create = require('../controller/create');
 var topics = require('../controller/display');
-
+var admin = require('../controller/admin');
 var send = require('../controller/send');
 var refresh = require('../controller/refresh');
 /* GET home page. */
@@ -50,7 +50,7 @@ router.get('/profile', function(req, res) {
     if (req.session.user) {
         res.render('profile', {
             'user': req.session.user,
-            'search':req.session.search
+            // 'search':req.session.search
         });
     }
     else {
@@ -75,6 +75,8 @@ router.post('/create', create.topics);
 router.get('/display', topics.display);
 router.post('/send', send.message);
 router.post('/refresh', refresh.messages);
+// router.get('/topicj/:id', admin.admin);
+// router.get('/topicl/:id', admin.admin);
 
 router.get('/logout', function(req, res) {
     req.session.user = null;

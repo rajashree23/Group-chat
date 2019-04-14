@@ -12,12 +12,12 @@ var topics=function(req,res){
 				console.log(user);
 				if(user){
 
-					adminModel.findOneAndUpdate({'email':req.session.user.email},
-				   {$set:{topicname:[{topic:req.body.topic}]}},
+					adminModel.updateOne({'email':req.session.user.email},
+				   {$push:{"topicname.$.topic":req.body.topic}},
 				   function(err,raw){
-						   console.log(raw);
+						   console.log(err);
 					 });
-				 
+
 				}
 				else{
 					var adminmodel= new adminModel({
