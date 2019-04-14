@@ -4,22 +4,24 @@ var adminModel = require('../models/admin');
 var adminj = function(req,res){
   req.session.topic = req.params.id;
   var ctopic=req.session.topic;
-  var member=req.session.email;
+  var member=req.session.user.email;
   adminModel.findOne({ "topic.topicname":ctopic},{"topic.$":1} ,function(err,users){
-    console.log("hii",users.memberemail);
+    console.log("hii",users.topic[0].memberemail);
 
-    if(users){
+    if(users.topic[0].memberemail.indexOf(member)>-1){
 
        return res.redirect('/topic/'+req.session.topic);
 
     }
     else {
-      adminModel.updateOne({'topic.topicname':  ctopic },
-       {$push:{topic:[{
-         topicname:{},
-         memberemail:[],
-         request:[req.session.user.email]
-       }]}},
+      users.topic[0].request.push(member);
+      console.log(users.topic[0].request);
+      adminModel.replaceOne({'topic.topicname':  ctopic },
+       {topic:[{
+         topicname:{ctopic},
+         memberemail:[users.topic[0].memberemail],
+         request:[users.topic[0].request]
+       }]},
        function(err,raw){
            console.log(raw);
        });
