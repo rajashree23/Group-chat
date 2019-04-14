@@ -36,13 +36,14 @@ var adminl=function(req,res){
   console.log(req.session.topic);
   var ctopic=req.session.topic;
   var member=req.session.user.email;
+  console.log(member);
   adminModel.findOne({ "topic.topicname":ctopic},{"topic.$":1} ,function(err,users){
 
   console.log(users);
   if(users)
-  {
+  {console.log(member);
   adminModel.updateOne({'topic.topicname':  ctopic },
-   {$pull:{"topic.$.request":[member]
+   {$pull:{"topic.$.request":member
    }},
    function(err,raw){
        console.log(raw);
