@@ -16,12 +16,11 @@ var adminj = function(req,res){
     else {
       users.topic[0].request.push(member);
       console.log(users.topic[0].request);
-      adminModel.replaceOne({'topic.topicname':  ctopic },
-       {topic:[{
-         topicname:{ctopic},
-         memberemail:[users.topic[0].memberemail],
-         request:[users.topic[0].request]
-       }]},
+
+
+      adminModel.updateOne({'topic.topicname':  ctopic },
+       {$push:{"topic.$.request":[member]
+       }},
        function(err,raw){
            console.log(raw);
        });
