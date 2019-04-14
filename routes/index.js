@@ -80,8 +80,8 @@ router.post('/create', create.topics);
 router.get('/display', topics.display);
 router.post('/send', send.message);
 router.post('/refresh', refresh.messages);
-router.get('/topicj/:id', admin.admin);
-router.get('/topicl/:id', admin.admin);
+router.get('/topicj/:id', admin.adminj);
+router.get('/topicl/:id', admin.adminl);
 
 router.get('/logout', function(req, res) {
     req.session.user = null;
