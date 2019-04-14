@@ -2,14 +2,9 @@ var mongoose = require('mongoose');
 var adminModel = require('../models/admin');
 
 var accept=function(req,res){
-  var findadmin = function (db, callback) {
-  adminModel.find({}).toArray(function(err, allTheThings) {
-    req.session.data=allTheThings;
-    console.log(allTheThings);
+  adminModel.findOne({'email': req.session.user.email},function(err,doc){
+    console.log(err);
   });
-}
-
-res.redirect('/notification');
 
 }
 module.exports = {
