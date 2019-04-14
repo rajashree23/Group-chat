@@ -38,24 +38,22 @@ var adminl=function(req,res){
   var member=req.session.user.email;
   adminModel.findOne({ "topic.topicname":ctopic},{"topic.$":1} ,function(err,users){
 
-
-
-  users.topic[0].memberemail.pop(member);
   console.log(users);
-  adminModel.replaceOne({'topic.topicname':  ctopic },
-   {topic:[{
-     topicname:{ctopic},
-     memberemail:[users.topic[0].memberemail],
-     request:[users.topic[0].request]
-   }]},
+  if(users)
+  {
+  adminModel.updateOne({'topic.topicname':  ctopic },
+   {$pull:{"topic.$.request":[member]
+   }},
    function(err,raw){
        console.log(raw);
    });
 
-   });
-   return res.redirect('/profile');
-}
+      return res.redirect('/profile');
+   }
 
+
+});
+}
 module.exports = {
     "adminj": adminj,
     "adminl":adminl,
