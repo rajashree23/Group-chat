@@ -31,8 +31,8 @@
         <h1>Topics</h1>
         <div class="list-group">
             <% for(let i = 0;i < topics.length ; i++){ %>
-              <p class="list-group-item"> <%- topics[i] %><a href="/topicj/<%- topics[i] %>">join
-              </a><a href="/topicl/<%- topics[i] %>">leave
+              <p class="list-group-item"> <%- topics[i] %><a class="join" href="/topicj/<%- topics[i] %>">join
+              </a><a class="leave" href="/topicl/<%- topics[i] %>">leave
               </a><span class="badge"><%- num[i]-1 %></span></p>
 
             <% } %>

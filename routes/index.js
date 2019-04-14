@@ -48,10 +48,15 @@ router.get('/topic/:id', function(req, res) {
 
 router.get('/profile', function(req, res) {
     if (req.session.user) {
+
         res.render('profile', {
             'user': req.session.user,
              'search':req.session.search
+
+
         });
+console.log(req.session.search);
+
     }
     else {
         res.redirect('/homepage')

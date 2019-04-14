@@ -22,13 +22,16 @@ var login = function(req, res) {
                 adminModel.findOne({email:req.body.email},function(err,users){
                   if(users){
                     req.session.search="yes";
+
                   }
                   else {
-                    req.session.search="yes";
+
+                    req.session.search="no";
+                    console.log(req.session.search=="yes");
                   }
 
                 });
-                
+
                 return res.redirect('/profile');
             } else
                 return res.render('login',{"msg":"Wrong email or password, Please try again..!!"});
