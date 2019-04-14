@@ -19,18 +19,9 @@ var login = function(req, res) {
                 };
                 req.session.user = details;
 
-                adminModel.findOne({email:req.body.email},function(err,users){
-                  if(users){
-                    req.session.search="yes";
 
-                  }
-                  else {
-
-                    req.session.search="no";
-                    console.log(req.session.search=="yes");
-                  }
                    return res.redirect('/profile');
-                });
+                
 
 
             } else
