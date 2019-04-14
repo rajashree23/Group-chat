@@ -8,6 +8,7 @@ var admin = require('../controller/admin');
 var send = require('../controller/send');
 var adminModel=require('../models/admin');
 var refresh = require('../controller/refresh');
+var accept = require('../controller/accept');
 /* GET home page. */
 router.get('/', function(req, res) {
     res.redirect('homepage');
@@ -71,25 +72,29 @@ router.get('/profile', function(req, res) {
 
     });
 
-
-console.log(req.session.search);
-
+  }
+  else
+    {
+      res.redirect('/homepage')
     }
-    else {
-        res.redirect('/homepage')
-    }
+  });
+  
+router.get('/notification',function(req,res){
+  if(req.session.user){
+  res.render('notification',{
+    'data':req.session.data
 
+  });
+  console.log(data);
+}
+else {
+    res.redirect('/homepage');
+}
 });
 
-router.get('/notif',function(req,res){
-  res.render('admin');
 
 
-});
-router.post('/notif',function(req,res){
-   if(req.session.user)
-     res.redirect('/admin');
-});
+
 
 router.post('/login', login.login);
 router.post('/register', register.register);
@@ -99,6 +104,7 @@ router.post('/send', send.message);
 router.post('/refresh', refresh.messages);
 router.get('/topicj/:id', admin.adminj);
 router.get('/topicl/:id', admin.adminl);
+router.post('/notif',accept.accept);
 
 router.get('/logout', function(req, res) {
     req.session.user = null;
