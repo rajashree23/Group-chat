@@ -11,18 +11,20 @@ var topics=function(req,res){
 			email:req.session.user.email},function(err,user){
 				console.log(user);
 				if(user){
-
 					adminModel.updateOne({'email':req.session.user.email},
 				   {$push:{"topicname.$.topic":req.body.topic}},
 				   function(err,raw){
 						   console.log(err);
 					 });
-
 				}
 				else{
 					var adminmodel= new adminModel({
 						 email:req.session.user.email,
-						 topicname:req.body.topic
+						 topic:[{
+							 topicname:req.body.topic,
+							 memberemail:[],
+							 request:[]
+						 }]
 					});
 					adminmodel.save(function(err,docs){
 						 console.log("this",err);
