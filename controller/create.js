@@ -14,7 +14,7 @@ var topics=function(req,res){
 					adminModel.updateOne({'email':req.session.user.email},
 				   {$push:{topic:[{
 						 topicname:req.body.topic,
-						 memberemail:[],
+						 memberemail:[req.session.user.email],
 						 request:[]
 					 }]}},
 				   function(err,raw){
@@ -26,7 +26,7 @@ var topics=function(req,res){
 						 email:req.session.user.email,
 						 topic:[{
 							 topicname:req.body.topic,
-							 memberemail:[],
+							 memberemail:[req.session.user.email],
 							 request:[]
 						 }]
 					});

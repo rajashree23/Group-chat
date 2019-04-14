@@ -29,10 +29,10 @@ var login = function(req, res) {
                     req.session.search="no";
                     console.log(req.session.search=="yes");
                   }
-
+                   return res.redirect('/profile');
                 });
 
-                return res.redirect('/profile');
+
             } else
                 return res.render('login',{"msg":"Wrong email or password, Please try again..!!"});
         }
