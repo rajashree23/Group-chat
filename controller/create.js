@@ -12,9 +12,13 @@ var topics=function(req,res){
 				console.log(user);
 				if(user){
 					adminModel.updateOne({'email':req.session.user.email},
-				   {$push:{"topicname.$.topic":req.body.topic}},
+				   {$push:{topic:[{
+						 topicname:req.body.topic,
+						 memberemail:[],
+						 request:[]
+					 }]}},
 				   function(err,raw){
-						   console.log(err);
+						   console.log(raw);
 					 });
 				}
 				else{
