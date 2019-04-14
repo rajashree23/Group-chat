@@ -78,14 +78,13 @@ router.get('/profile', function(req, res) {
       res.redirect('/homepage')
     }
   });
-  
+
 router.get('/notification',function(req,res){
   if(req.session.user){
   res.render('notification',{
-    'data':req.session.data
-
+    'requests':{}
   });
-  console.log(data);
+
 }
 else {
     res.redirect('/homepage');

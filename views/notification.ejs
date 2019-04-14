@@ -19,20 +19,21 @@
 </head>
 <body>
 <table>
-      <!-- <% for(let i = 0;i < data.length ; i++){
-          %> -->
-        <!-- <tr>
-        <td>
+      <% for(let i = 0;i < requests.topic.length ; i++){
+           for(let j=0;j< requests.topic[i].request.length;j++){%>
+        <tr>
+         <td>
       <div class="list-group-item" >
-          <span><%- email[i].email %></span></div>
+          <span><%- requests.topic[i].topicname %></span><br>
+          <span><%- requests.topic[i].request[j] %></span></div>
         </td>
           <td>
-            <a href="/accept/<%- email[i].email %>" class="button">Accept</a>
+            <a href="/accept/<%- requests.topic[i].request[j] %>" class="button">Accept</a>
           </td>
-          <td><a href="/deny/<%- email[i].email %>" class="button">Deny</a></td>
-        </tr> -->
-
-      <!-- <% } %> -->
+          <td><a href="/deny/<%- requests.topic[i].request[j] %>" class="button">Deny</a></td>
+        </tr>
+        <% } %>
+       <% } %>
 
 </table>
   <div class="list-group">
