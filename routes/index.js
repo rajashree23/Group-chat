@@ -6,6 +6,7 @@ var create = require('../controller/create');
 var topics = require('../controller/display');
 var admin = require('../controller/admin');
 var send = require('../controller/send');
+var adminModel=require('../models/admin');
 var refresh = require('../controller/refresh');
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -48,13 +49,29 @@ router.get('/topic/:id', function(req, res) {
 
 router.get('/profile', function(req, res) {
     if (req.session.user) {
+      adminModel.findOne({email:req.session.user.email},function(err,users){
+        if(users){
+          req.session.search="yes";
 
+        }
+
+        else {
+
+          req.session.search="no";
+          console.log(req.session.search=="yes");
+        }
         res.render('profile', {
             'user': req.session.user,
              'search':req.session.search
 
 
-        });
+
+      });
+
+
+    });
+
+
 console.log(req.session.search);
 
     }
