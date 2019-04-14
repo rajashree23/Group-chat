@@ -6,7 +6,7 @@ var adminj = function(req,res){
   var ctopic=req.session.topic;
   var member=req.session.user.email;
   adminModel.findOne({ "topic.topicname":ctopic},{"topic.$":1} ,function(err,users){
-    console.log("hii",users.topic[0].memberemail);
+    console.log("hii",users);
 
     if(users.topic[0].memberemail.indexOf(member)>-1){
 
@@ -34,18 +34,27 @@ var adminj = function(req,res){
 }
 var adminl=function(req,res){
   req.session.topic = req.params.id;
+  console.log(req.session.topic);
   var ctopic=req.session.topic;
-  var member=req.session.email;
-  adminModel.updateOne({'topic.topicname':  ctopic },
-   {$pull:{topic:[{
-     topicname:{},
-     memberemail:[req.session.user.email],
-     request:[]
-   }]}},
+  var member=req.session.user.email;
+  adminModel.findOne({ "topic.topicname":ctopic},{"topic.$":1} ,function(err,users){
+
+
+
+  users.topic[0].memberemail.pop(member);
+  console.log(users);
+  adminModel.replaceOne({'topic.topicname':  ctopic },
+   {topic:[{
+     topicname:{ctopic},
+     memberemail:[users.topic[0].memberemail],
+     request:[users.topic[0].request]
+   }]},
    function(err,raw){
        console.log(raw);
    });
-     return res.redirect('/profile');
+
+   });
+   return res.redirect('/profile');
 }
 
 module.exports = {
