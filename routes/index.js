@@ -79,18 +79,20 @@ router.get('/profile', function(req, res) {
     }
   });
 
-router.get('/notification',function(req,res){
-  if(req.session.user){
-  res.render('notification',{
-    'requests':{}
-  });
+// router.get('/notification',function(req,res){
+//   if(req.session.user){
+//   res.render('notification',{
+//     'requests':{}
+//   });
+//
+// }
+// else {
+//     res.redirect('/homepage');
+// }
+// });
 
-}
-else {
-    res.redirect('/homepage');
-}
-});
-
+router.get('/accept/:id/:id1',accept.acceptdone);
+ router.get('/deny/:id/:id1',accept.denydone);
 
 
 

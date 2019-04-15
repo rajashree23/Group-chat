@@ -43,7 +43,7 @@ var adminl=function(req,res){
   if(users)
   {console.log(member);
   adminModel.updateOne({'topic.topicname':  ctopic },
-   {$pull:{"topic.$.request":member
+   {$pull:{"topic.$.memberemail":member
    }},
    function(err,raw){
        console.log(raw);
